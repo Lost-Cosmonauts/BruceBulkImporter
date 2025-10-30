@@ -36,7 +36,7 @@ struct FBruceImportData : public FTableRowBase
 	EImportType AssetImportType = EImportType::Unselected;
 
 	/** The asset import type specific options */
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Bruce, meta = (AllowedClasses = "AbcImportSettings,GroomImportOptions,GroomCacheImportOptions,FbxImportUI,DNAAssetImportUI,SpeedTreeImportData,UsdStageImportOptions"))
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Bruce, meta = (AllowedClasses = "/Script/AlembicLibrary.AbcImportSettings,/Script/HairStrandsCore.GroomImportOptions,/Script/HairStrandsCore.GroomCacheImportOptions,/Script/UnrealEd.FbxImportUI,/Script/RigLogicEditor.DNAAssetImportUI,/Script/SpeedTreeImporter.SpeedTreeImportData,/Script/USDStageImporter.UsdStageImportOptions"))
 	TSubclassOf<UObject> ImportOptions = nullptr;
 
 	/** File name to import */
