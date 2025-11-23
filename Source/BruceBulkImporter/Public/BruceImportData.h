@@ -3,6 +3,8 @@
 #pragma once
 
 #include "Engine/DataTable.h"
+#include "UObject/Object.h"
+#include "Templates/SubclassOf.h"
 
 #include "BruceImportData.generated.h"
 

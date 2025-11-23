@@ -2,10 +2,16 @@
 
 #pragma once
 
+#include "EditorSubsystem.h"
+#include "Engine/DataTable.h"
+#include "UObject/Object.h"
+#include "Templates/SubclassOf.h"
+
+#include "BruceImportData.h"
+
 #include "BruceEditorSubsystem.generated.h"
 
 struct FBruceImportData;
-enum class EImportType : uint8;
 
 UCLASS(BlueprintType)
 class UBruceEditorSubsystem : public UEditorSubsystem
