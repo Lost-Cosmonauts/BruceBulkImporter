@@ -2,6 +2,7 @@
 
 #pragma once
 
+#include "Misc/EngineVersionComparison.h"
 #include "Engine/DataTable.h"
 #include "UObject/Object.h"
 #include "Templates/SubclassOf.h"
@@ -20,7 +21,9 @@ enum class EImportType : uint8
 	GroomCache,
 	VDB,
 	FBX,
+#if UE_VERSION_OLDER_THAN(5,8,0)
 	RigLogic,
+#endif
 	SpeedTree,
 	USD,
 };
@@ -86,8 +89,10 @@ struct FBruceImportData : public FTableRowBase
 			return VDBFilename;
 		case EImportType::FBX:
 			return FBXFilename;
+#if UE_VERSION_OLDER_THAN(5,8,0)
 		case EImportType::RigLogic:
 			return FBXFilename;
+#endif
 		case EImportType::SpeedTree:
 			return SpeedTreeFilename;
 		case EImportType::USD:

@@ -7,7 +7,9 @@
 #include "AssetToolsModule.h"
 #include "GroomImportOptions.h"
 #include "GroomCacheImportOptions.h"
+#if UE_VERSION_OLDER_THAN(5,8,0)
 #include "DNAAssetImportUI.h"
+#endif
 #include "OpenVDBImportOptions.h"
 #include "SpeedTreeImportData.h"
 #include "USDStageImportOptions.h"
@@ -25,7 +27,9 @@ UBruceEditorSubsystem::UBruceEditorSubsystem()
 		{EImportType::GroomCache, UGroomCacheImportOptions::StaticClass()},
 		{EImportType::VDB, UOpenVDBImportOptionsObject::StaticClass()},
 		{EImportType::FBX, UFbxImportUI::StaticClass()},
+#if UE_VERSION_OLDER_THAN(5,8,0)
 		{EImportType::RigLogic, UDNAAssetImportUI::StaticClass()},
+#endif
 		{EImportType::SpeedTree, USpeedTreeImportData::StaticClass()},
 		{EImportType::USD, UUsdStageImportOptions::StaticClass()}
 	}
