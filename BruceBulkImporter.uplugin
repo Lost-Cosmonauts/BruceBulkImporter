@@ -41,6 +41,10 @@
 		{
 			"Name": "USDImporter",
 			"Enabled": true
+		},
+		{
+			"Name": "CinematicAssemblyTools",
+			"Enabled": true
 		}
 	]
 }

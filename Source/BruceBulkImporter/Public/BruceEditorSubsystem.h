@@ -11,6 +11,8 @@
 
 #include "BruceEditorSubsystem.generated.h"
 
+class ULevelSequence;
+class UAnimSequence;
 struct FBruceImportData;
 
 UCLASS(BlueprintType)
@@ -29,6 +31,15 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category = Bruce)
 	void EnableFbxContentType(UFbxImportUI* FbxImportUI, bool bEnable = true);
+
+	UFUNCTION(BlueprintCallable, Category = Bruce)
+	void BuildImportListFromSelection(const FString& ImportDir, TSubclassOf<UObject> DefaultImportOptions, const TMap<FString, TSubclassOf<UObject>>& ImportOptionMap, bool bClearList = false);
+
+	UFUNCTION(BlueprintCallable, Category = Bruce)
+	void UpdateShotSequence(ULevelSequence* Sequence, TArray<UAnimSequence*> Animations);
+
+	UFUNCTION(BlueprintCallable, Category = Bruce)
+	void CreateImportTables(const FString& ImportDir, const FString& PackagePath);
 
 	TMap<EImportType, TSubclassOf<UObject>> ImportToOptionsClass;
 

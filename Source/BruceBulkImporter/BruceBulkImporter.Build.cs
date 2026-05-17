@@ -54,6 +54,13 @@ public class BruceBulkImporter : ModuleRules
 				"SpeedTreeImporter",
 				"USDStageImporter",
 				"UnrealUSDWrapper",
+				"Blutility",
+				"LevelSequence",
+				"MovieScene",
+				"MovieSceneTracks",
+				"SequencerScripting",
+				"DeveloperSettings",
+				"CineAssemblyTools",
 				// ... add private dependencies that you statically link with here ...	
 			}
 			);
