@@ -555,6 +555,7 @@ void UBruceEditorSubsystem::UpdateShotSequence(ULevelSequence* Sequence, TArray<
 		FFrameRate TargetTickResolution = MovieScene->GetTickResolution();
 		FFrameNumber MaxEndFrame = TargetTickResolution.AsFrameTime(MaxLength).RoundToFrame();
 		
+		// TODO: need to set more than just playback range
 		MovieScene->SetPlaybackRange(StartFrameTick.Value, (StartFrameTick + MaxEndFrame).Value);
 		TargetSequence->MarkPackageDirty();
 
@@ -567,6 +568,7 @@ void UBruceEditorSubsystem::UpdateShotSequence(ULevelSequence* Sequence, TArray<
 			ParentMovieScene->SetPlaybackRange(ParentStartFrameTick.Value, (ParentStartFrameTick + ParentMaxEndFrame).Value);
 			Sequence->MarkPackageDirty();
 
+			// TODO: do camera cut as well as subsequence
 			for (const TObjectPtr<UMovieSceneTrack>& Track : ParentMovieScene->GetTracks())
 			{
 				UMovieSceneSubTrack* SubTrack = Cast<UMovieSceneSubTrack>(Track);
