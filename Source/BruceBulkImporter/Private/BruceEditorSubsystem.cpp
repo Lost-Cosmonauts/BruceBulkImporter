@@ -328,7 +328,7 @@ void UBruceEditorSubsystem::UpdateShotSequence(ULevelSequence* Sequence, TArray<
 
 	FString ExpectedSubSeqName = Sequence->GetName() + TEXT("_Anim");
 
-	
+
 	for (const TObjectPtr<UMovieSceneTrack>& Track : ParentMovieScene->GetTracks())
 	{
 		UMovieSceneSubTrack* SubTrack = Cast<UMovieSceneSubTrack>(Track);
@@ -436,13 +436,13 @@ void UBruceEditorSubsystem::UpdateShotSequence(ULevelSequence* Sequence, TArray<
 		int32 BestScore = -1;
 
 		auto GetMatchScore = [](const FString& InName, const FString& SearchTerm) -> int32
-		{
-			if (!InName.Contains(SearchTerm))
 			{
-				return -1;
-			}
-			return 1000 - FMath::Abs(InName.Len() - SearchTerm.Len());
-		};
+				if (!InName.Contains(SearchTerm))
+				{
+					return -1;
+				}
+				return 1000 - FMath::Abs(InName.Len() - SearchTerm.Len());
+			};
 
 		for (int32 i = 0; i < MovieScene->GetSpawnableCount(); ++i)
 		{
@@ -554,7 +554,7 @@ void UBruceEditorSubsystem::UpdateShotSequence(ULevelSequence* Sequence, TArray<
 	{
 		FFrameRate TargetTickResolution = MovieScene->GetTickResolution();
 		FFrameNumber MaxEndFrame = TargetTickResolution.AsFrameTime(MaxLength).RoundToFrame();
-		
+
 		// TODO: need to set more than just playback range
 		MovieScene->SetPlaybackRange(StartFrameTick.Value, (StartFrameTick + MaxEndFrame).Value);
 		TargetSequence->MarkPackageDirty();
@@ -580,7 +580,7 @@ void UBruceEditorSubsystem::UpdateShotSequence(ULevelSequence* Sequence, TArray<
 						if (SubSection)
 						{
 							SubSection->SetRange(TRange<FFrameNumber>(SubSection->GetRange().GetLowerBoundValue(), SubSection->GetRange().GetLowerBoundValue() + ParentMaxEndFrame.Value));
-							
+
 							if (ULevelSequence* SubSequenceObj = Cast<ULevelSequence>(SubSection->GetSequence()))
 							{
 								if (UMovieScene* SubMovieScene = SubSequenceObj->GetMovieScene())
@@ -588,7 +588,7 @@ void UBruceEditorSubsystem::UpdateShotSequence(ULevelSequence* Sequence, TArray<
 									FFrameNumber SubStart = SubMovieScene->GetPlaybackRange().GetLowerBoundValue();
 									FFrameRate SubTickRes = SubMovieScene->GetTickResolution();
 									FFrameNumber SubMaxEnd = SubTickRes.AsFrameTime(MaxLength).RoundToFrame();
-									
+
 									SubMovieScene->SetPlaybackRange(SubStart.Value, (SubStart + SubMaxEnd).Value);
 									SubSequenceObj->MarkPackageDirty();
 								}
